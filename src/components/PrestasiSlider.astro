@@ -1,0 +1,275 @@
+---
+---
+
+<section class="prestasi-section section">
+    <div class="container">
+        <h2 class="section-title">Prestasi <span class="text-gradient">Siswa-Siswi Kami</span></h2>
+        <p class="section-subtitle">Membangun generasi unggul yang berprestasi dan menginspirasi.</p>
+        
+        <div class="prestasi-grid">
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <button class="slider-btn prev" aria-label="Previous image">❮</button>
+                    <div class="slider-track" id="prestasi-slider">
+                        <div class="slide"><img src="/prestasi/prestasi-1.jpg" alt="Prestasi Taekwondo" /></div>
+                        <div class="slide"><img src="/prestasi/prestasi-2.jpg" alt="Prestasi Football Fun Game" /></div>
+                        <div class="slide"><img src="/prestasi/prestasi-3.jpg" alt="Prestasi Pencak Silat" /></div>
+                        <div class="slide"><img src="/prestasi/prestasi-4.jpg" alt="Prestasi Piano Grading" /></div>
+                        <div class="slide"><img src="/prestasi/prestasi-5.jpg" alt="Prestasi Anak Indonesia Award" /></div>
+                    </div>
+                    <button class="slider-btn next" aria-label="Next image">❯</button>
+                </div>
+                <div class="slider-dots" id="slider-dots"></div>
+            </div>
+            
+            <div class="ig-cta">
+                <div class="ig-profile glass">
+                    <img src="/logo.png" alt="SD Muh Purwodiningratan" class="ig-avatar" />
+                    <div>
+                        <h3>@sdmupurwo</h3>
+                        <p>SD Muh Purwodiningratan Official</p>
+                    </div>
+                </div>
+                <p class="ig-desc">Dapatkan update terbaru kegiatan sekolah, prestasi siswa, dan informasi penting lainnya langsung dari halaman Instagram resmi kami.</p>
+                <a href="https://instagram.com/sdmupurwo" target="_blank" class="btn btn-ig">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    Follow @sdmupurwo
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const track = document.getElementById('prestasi-slider');
+    const slides = Array.from(track?.querySelectorAll('.slide') || []);
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    const dotsContainer = document.getElementById('slider-dots');
+
+    if (track && slides.length > 0) {
+        // Create dots
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (idx === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => scrollToSlide(idx));
+            dotsContainer?.appendChild(dot);
+        });
+
+        const dots = Array.from(dotsContainer?.querySelectorAll('.dot') || []);
+
+        const scrollToSlide = (index) => {
+            const slideWidth = track.clientWidth;
+            track.scrollTo({
+                left: index * slideWidth,
+                behavior: 'smooth'
+            });
+            updateDots(index);
+        };
+
+        const updateDots = (activeIndex) => {
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeIndex);
+            });
+        };
+
+        prevBtn?.addEventListener('click', () => {
+            const index = Math.round(track.scrollLeft / track.clientWidth);
+            const newIndex = Math.max(0, index - 1);
+            scrollToSlide(newIndex);
+        });
+
+        nextBtn?.addEventListener('click', () => {
+            const index = Math.round(track.scrollLeft / track.clientWidth);
+            const newIndex = Math.min(slides.length - 1, index + 1);
+            scrollToSlide(newIndex);
+        });
+
+        track.addEventListener('scroll', () => {
+            const index = Math.round(track.scrollLeft / track.clientWidth);
+            updateDots(index);
+        });
+    }
+</script>
+
+<style>
+    .prestasi-section {
+        background: var(--color-surface);
+        border-top: 1px solid rgba(255,255,255,0.05);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .prestasi-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .slider-container {
+        position: relative;
+        width: 100%;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        background: var(--color-background);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .slider-track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .slider-track::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .slide {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(13, 13, 26, 0.6);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .slider-btn:hover {
+        background: var(--color-primary);
+        border-color: var(--color-primary-light);
+    }
+
+    .slider-btn.prev {
+        left: 1rem;
+    }
+
+    .slider-btn.next {
+        right: 1rem;
+    }
+
+    .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .dot.active {
+        background: var(--color-primary);
+        box-shadow: 0 0 10px rgba(233, 30, 140, 0.5);
+    }
+    
+    .dot:hover {
+        background: var(--color-primary-light);
+    }
+
+    .ig-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .ig-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem;
+        border-radius: var(--radius-lg);
+    }
+    
+    .ig-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--color-primary);
+    }
+    
+    .ig-profile h3 {
+        font-size: 1.1rem;
+        color: var(--color-text);
+    }
+    
+    .ig-profile p {
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+    }
+    
+    .ig-desc {
+        color: var(--color-text-muted);
+        line-height: 1.7;
+    }
+    
+    .btn-ig {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+        width: max-content;
+    }
+    
+    .btn-ig:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(225, 48, 108, 0.5);
+    }
+
+    @media (max-width: 768px) {
+        .prestasi-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        .slider-btn {
+            width: 36px;
+            height: 36px;
+            font-size: 1.2rem;
+        }
+    }
+</style>

@@ -1,0 +1,12 @@
+0 verbose cli /Users/ipul/Library/Caches/hermit/pkg/node@lts/bin/node /Users/ipul/Library/Caches/hermit/pkg/node@lts/bin/npm
+1 info using npm@11.12.1
+2 info using node@v24.15.0
+3 silly config load:file:/Users/ipul/Library/Caches/hermit/pkg/node@lts/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/ipul/Documents/project/personal/sdmuhpurwo/.npmrc
+5 silly config load:file:/Users/ipul/.npmrc
+6 silly config load:file:/Users/ipul/Documents/project/personal/sdmuhpurwo/.hermit/node/etc/npmrc
+7 verbose title npm run dev
+8 verbose argv "run" "dev"
+9 verbose logfile logs-max:10 dir:/Users/ipul/Documents/project/personal/sdmuhpurwo/.hermit/node/cache/_logs/2026-07-28T04_58_40_162Z-
+10 verbose logfile /Users/ipul/Documents/project/personal/sdmuhpurwo/.hermit/node/cache/_logs/2026-07-28T04_58_40_162Z-debug-0.log
+11 silly logfile done cleaning log files

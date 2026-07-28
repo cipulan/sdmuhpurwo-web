@@ -1,0 +1,241 @@
+/*
+ * SD Muhammadiyah Purwodiningratan - Design System
+ * Dark theme with magenta/holographic accents inspired by the school logo
+ */
+
+:root {
+  /* Primary Colors - Dark Theme with Magenta */
+  --color-primary: #e91e8c;        /* Magenta / Pink */
+  --color-primary-light: #f472b6;   /* Light Pink */
+  --color-primary-dark: #be185d;    /* Deep Magenta */
+  --color-secondary: #7dd3fc;       /* Holographic Cyan */
+  --color-accent-purple: #a78bfa;   /* Holographic Purple */
+  --color-accent-gold: #fbbf24;     /* Gold/Amber */
+
+  /* Backgrounds */
+  --color-background: #0d0d1a;      /* Very Dark Blue-Black */
+  --color-surface: #1a1a2e;         /* Dark Surface */
+  --color-surface-light: #252545;   /* Slightly Lighter Surface */
+
+  /* Text */
+  --color-text: #f1f5f9;            /* Light Text */
+  --color-text-muted: #94a3b8;      /* Muted Text */
+
+  /* Gradients */
+  --gradient-holographic: linear-gradient(135deg, #7dd3fc, #a78bfa, #e91e8c, #f5a623);
+  --gradient-magenta: linear-gradient(135deg, #e91e8c, #be185d);
+  --gradient-surface: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(13,13,26,0.95));
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.5), 0 4px 10px -4px rgb(0 0 0 / 0.3);
+  --shadow-glow: 0 0 20px rgba(233, 30, 140, 0.3);
+
+  /* Borders & Radius */
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Glassmorphism - Dark */
+.glass {
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.text-gradient {
+  background: var(--gradient-holographic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Section */
+.section {
+  padding: 3.5rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+}
+
+/* Utility Animations */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animate-fade-up.visible {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(233, 30, 140, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(233, 30, 140, 0.6); }
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--gradient-magenta);
+  color: white;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(233, 30, 140, 0.5);
+}
+
+.btn-secondary {
+  background: var(--color-surface-light);
+  color: var(--color-text);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+/* Divider Line with gradient */
+.divider {
+  height: 2px;
+  background: var(--gradient-holographic);
+  border: none;
+  margin: 0;
+  opacity: 0.5;
+}
+
+/* Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2.5rem 0;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}

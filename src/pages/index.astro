@@ -1,0 +1,247 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PrestasiSlider from '../components/PrestasiSlider.astro';
+---
+
+<Layout title="Beranda">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-badge animate-fade-up">
+                <span>✨ Terakreditasi A</span>
+            </div>
+            <img src="/logo.png" alt="Logo SD Muhammadiyah Purwodiningratan" class="hero-logo animate-fade-up" />
+            <h1 class="hero-title animate-fade-up">SD Muhammadiyah <br/><span class="text-gradient">Purwodiningratan</span></h1>
+            <p class="hero-subtitle animate-fade-up">Mencetak Generasi "Milenial Qur'ani"</p>
+            <div class="hero-actions animate-fade-up">
+                <a href="/ppdb" class="btn btn-primary">Daftar Sekarang</a>
+                <a href="#profil" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="section">
+        <div class="container">
+            <div class="profile-grid">
+                <div class="profile-text animate-fade-up">
+                    <h2 class="profile-heading">Sekilas <span class="text-gradient">Tentang Kami</span></h2>
+                    <p>Selamat datang di website resmi SD Muhammadiyah Purwodiningratan Yogyakarta! Kami adalah institusi pendidikan dasar unggulan di bawah naungan Pimpinan Daerah Muhammadiyah (PDM) Kota Yogyakarta yang telah terakreditasi <strong>"A"</strong>.</p>
+                    <p>Dengan mengusung visi sebagai sekolah <strong>"Milenial Qur'ani"</strong>, kami berkomitmen penuh untuk menghadirkan pendidikan yang tidak hanya berfokus pada kecerdasan akademik, tetapi juga pada penanaman akhlak mulia dan nilai-nilai Islami yang kuat sejak dini.</p>
+                    <p>Kami percaya bahwa setiap anak adalah individu yang unik dan memiliki potensi luar biasa. Oleh karena itu, kami menyediakan lingkungan belajar yang aman, nyaman, dan inspiratif agar anak-anak siap menghadapi tantangan era milenial dengan berlandaskan Al-Qur'an.</p>
+                </div>
+                <div class="profile-card animate-fade-up">
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <span class="stat-number text-gradient">A</span>
+                            <span class="stat-label">Akreditasi</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">🕌</span>
+                            <span class="stat-label">ISMUBA</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">📖</span>
+                            <span class="stat-label">Qur'ani</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">🏆</span>
+                            <span class="stat-label">Berprestasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prestasi Slider Section -->
+    <PrestasiSlider />
+</Layout>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-fade-up').forEach(el => observer.observe(el));
+</script>
+
+<style>
+    /* Hero */
+    .hero {
+        position: relative;
+        padding: 5rem 0 6rem;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        min-height: 520px;
+    }
+    
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: url('/hero-bg.jpg');
+        background-size: cover;
+        background-position: center 40%;
+        background-repeat: no-repeat;
+    }
+    
+    .hero-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            linear-gradient(to bottom, 
+                rgba(13, 13, 26, 0.7) 0%, 
+                rgba(13, 13, 26, 0.55) 40%, 
+                rgba(13, 13, 26, 0.65) 70%, 
+                rgba(13, 13, 26, 0.95) 100%),
+            radial-gradient(ellipse at center top, rgba(233, 30, 140, 0.15) 0%, transparent 60%);
+    }
+    
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .hero-badge {
+        display: inline-flex;
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        background: var(--color-surface);
+        border: 1px solid rgba(255,255,255,0.08);
+        font-size: 0.85rem;
+        color: var(--color-accent-gold);
+        font-weight: 500;
+    }
+    
+    .hero-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(233, 30, 140, 0.4);
+        animation: float 4s ease-in-out infinite;
+        box-shadow: 0 0 20px rgba(233, 30, 140, 0.15);
+    }
+    
+    .hero-title {
+        font-size: 2.75rem;
+        line-height: 1.15;
+        color: var(--color-text);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.15rem;
+        color: var(--color-text-muted);
+        font-weight: 400;
+    }
+    
+    .hero-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+    
+    /* Profile */
+    .profile-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+    
+    .profile-heading {
+        font-size: 2rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .profile-text p {
+        margin-bottom: 0.75rem;
+        color: var(--color-text-muted);
+        font-size: 0.95rem;
+        line-height: 1.75;
+    }
+    
+    .profile-text strong {
+        color: var(--color-primary-light);
+    }
+    
+    .profile-card {
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        border: 1px solid rgba(255,255,255,0.06);
+    }
+    
+    .stat-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem 0.75rem;
+        border-radius: var(--radius-md);
+        background: var(--color-surface-light);
+        border: 1px solid rgba(255,255,255,0.04);
+        transition: all 0.3s ease;
+    }
+    
+    .stat-item:hover {
+        border-color: rgba(233, 30, 140, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+        .hero {
+            padding: 3.5rem 0 4rem;
+            min-height: 420px;
+        }
+        .hero-bg {
+            background-position: center 15%;
+        }
+        .hero-title {
+            font-size: 2rem;
+        }
+        .hero-logo {
+            width: 64px;
+            height: 64px;
+        }
+        .hero-actions {
+            flex-direction: column;
+            width: 100%;
+        }
+        .hero-actions .btn {
+            width: 100%;
+        }
+        .profile-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+</style>

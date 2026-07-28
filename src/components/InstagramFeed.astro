@@ -1,0 +1,120 @@
+---
+---
+
+<section class="instagram-section section">
+    <div class="container">
+        <h2 class="section-title"><span class="text-gradient">Instagram</span> Kami</h2>
+        <p class="section-subtitle">Ikuti aktivitas terbaru siswa-siswi kami di Instagram @sdmupurwo</p>
+        
+        <div class="ig-feed-wrapper">
+            <div class="ig-embed-container">
+                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/sdmupurwo/" data-instgrm-version="14" style="background:#1a1a2e; border:0; border-radius:12px; margin:0; max-width:400px; min-width:280px; padding:0; width:100%;">
+                </blockquote>
+            </div>
+            
+            <div class="ig-cta">
+                <div class="ig-profile glass">
+                    <img src="/logo.png" alt="SD Muh Purwodiningratan" class="ig-avatar" />
+                    <div>
+                        <h3>@sdmupurwo</h3>
+                        <p>SD Muh Purwodiningratan Official</p>
+                    </div>
+                </div>
+                <p class="ig-desc">Dapatkan update terbaru kegiatan sekolah, prestasi siswa, dan informasi penting lainnya langsung dari halaman Instagram resmi kami.</p>
+                <a href="https://instagram.com/sdmupurwo" target="_blank" class="btn btn-ig">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    Follow @sdmupurwo
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script async src="//www.instagram.com/embed.js"></script>
+
+<style>
+    .instagram-section {
+        background: var(--color-surface);
+        border-top: 1px solid rgba(255,255,255,0.05);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .ig-feed-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .ig-embed-container {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    
+    .ig-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .ig-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem;
+        border-radius: var(--radius-lg);
+    }
+    
+    .ig-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--color-primary);
+    }
+    
+    .ig-profile h3 {
+        font-size: 1.1rem;
+        color: var(--color-text);
+    }
+    
+    .ig-profile p {
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+    }
+    
+    .ig-desc {
+        color: var(--color-text-muted);
+        line-height: 1.7;
+    }
+    
+    .btn-ig {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+        width: max-content;
+    }
+    
+    .btn-ig:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(225, 48, 108, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+        .ig-feed-wrapper {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+</style>
