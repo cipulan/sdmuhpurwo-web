@@ -1,14 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="PPDB">
     <section class="page-header">
         <div class="page-header-bg"></div>
         <div class="container animate-fade-up">
-            <h1 class="page-title">Penerimaan Peserta<br/><span class="text-gradient">Didik Baru</span></h1>
-            <p class="page-subtitle">Mari Bergabung Menjadi Bagian dari Keluarga Besar SD Muhammadiyah Purwodiningratan!</p>
+            <h1 class="page-title">
+                Penerimaan Peserta<br /><span class="text-gradient"
+                    >Didik Baru</span
+                >
+            </h1>
+            <p class="page-subtitle">
+                Mari Bergabung Menjadi Bagian dari Keluarga Besar SD
+                Muhammadiyah Purwodiningratan!
+            </p>
         </div>
     </section>
 
@@ -16,28 +23,60 @@ import Card from '../components/Card.astro';
         <div class="container">
             <div class="ppdb-content">
                 <div class="info-text animate-fade-up">
-                    <p>Ayah/Bunda, pendaftaran siswa baru untuk tahun ajaran mendatang telah dibuka dan dapat dilakukan secara online. Kami memberikan kemudahan bagi orang tua untuk mendaftarkan putra-putrinya dari rumah.</p>
+                    <p>
+                        Ayah/Bunda, pendataan siswa baru untuk tahun ajaran
+                        mendatang telah dibuka dan dapat dilakukan secara
+                        online. Kami memberikan kemudahan bagi orang tua untuk
+                        mendaftarkan putra-putrinya dari rumah.
+                    </p>
                 </div>
 
                 <div class="grid-3">
-                    <Card title="1. Pengisian Formulir" icon="📝">
-                        <p>Ayah/Bunda dapat mengisi data diri calon siswa secara online melalui tautan resmi Google Form kami.</p>
+                    <Card title="1. Pengisian Formulir Pendataan" icon="📝">
+                        <p>
+                            Ayah/Bunda dapat mengisi data diri calon siswa
+                            secara online melalui tautan resmi Google Form kami.
+                        </p>
                     </Card>
                     <Card title="2. Konfirmasi" icon="💬">
-                        <p>Setelah mengisi formulir, silakan lakukan konfirmasi pendaftaran melalui WhatsApp Admin PPDB di nomor 0822-2534-1300.</p>
+                        <p>
+                            Kami akan membuat group WA SPMB untuk invite calon
+                            murid baru, memberikan informasi alur dan biaya di 1
+                            tahun sebelum Tahun ajaran dimulai.
+                        </p>
                     </Card>
                     <Card title="3. Informasi Lanjutan" icon="📅">
-                        <p>Jadwal observasi/wawancara dan pengumpulan berkas fisik akan diinformasikan kemudian.</p>
+                        <p>
+                            Pengisian formulir berbayar dan jadwal
+                            observasi/wawancara akan diinformasikan kembali
+                            melalui group WA SPMB.
+                        </p>
                     </Card>
                 </div>
 
                 <div class="cta-box animate-fade-up">
                     <div class="cta-glow"></div>
-                    <h2>Formulir <span class="text-gradient">Pendaftaran Online</span></h2>
-                    <p>Klik tombol di bawah ini untuk mulai mengisi formulir pendaftaran.</p>
+                    <h2>
+                        Formulir <span class="text-gradient"
+                            >Pendataan Online</span
+                        >
+                    </h2>
+                    <p>
+                        Klik tombol di bawah ini untuk mulai mengisi formulir
+                        pendataan.
+                    </p>
                     <div class="cta-actions">
-                        <a href="https://forms.gle/5VxkCCNa5ntLActWA" target="_blank" class="btn btn-primary btn-large">📋 Isi Formulir PPDB</a>
-                        <a href="https://api.whatsapp.com/send?phone=6282225341300" target="_blank" class="btn btn-wa">💬 Hubungi Admin PPDB</a>
+                        <a
+                            href="https://forms.gle/5VxkCCNa5ntLActWA"
+                            target="_blank"
+                            class="btn btn-primary btn-large"
+                            >📋 Isi Formulir SPMB</a
+                        >
+                        <a
+                            href="https://api.whatsapp.com/send?phone=6282225341300"
+                            target="_blank"
+                            class="btn btn-wa">💬 Hubungi Admin SPMB</a
+                        >
                     </div>
                 </div>
             </div>
@@ -46,14 +85,19 @@ import Card from '../components/Card.astro';
 </Layout>
 
 <script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate-fade-up').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        },
+        { threshold: 0.1 },
+    );
+    document
+        .querySelectorAll(".animate-fade-up")
+        .forEach((el) => observer.observe(el));
 </script>
 
 <style>
@@ -63,26 +107,30 @@ import Card from '../components/Card.astro';
         text-align: center;
         overflow: hidden;
     }
-    
+
     .page-header-bg {
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse at center top, rgba(233, 30, 140, 0.12) 0%, transparent 60%);
+        background: radial-gradient(
+            ellipse at center top,
+            rgba(233, 30, 140, 0.12) 0%,
+            transparent 60%
+        );
         z-index: -1;
     }
-    
+
     .page-title {
         font-size: 3rem;
         margin-bottom: 1rem;
     }
-    
+
     .page-subtitle {
         font-size: 1.15rem;
         color: var(--color-text-muted);
         max-width: 600px;
         margin: 0 auto;
     }
-    
+
     .info-text {
         text-align: center;
         font-size: 1.1rem;
@@ -91,7 +139,7 @@ import Card from '../components/Card.astro';
         margin: 0 auto 3rem;
         color: var(--color-text-muted);
     }
-    
+
     .cta-box {
         position: relative;
         text-align: center;
@@ -100,10 +148,10 @@ import Card from '../components/Card.astro';
         max-width: 800px;
         margin: 3rem auto 0;
         background: var(--color-surface);
-        border: 1px solid rgba(255,255,255,0.06);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         overflow: hidden;
     }
-    
+
     .cta-glow {
         position: absolute;
         top: -50%;
@@ -111,21 +159,25 @@ import Card from '../components/Card.astro';
         transform: translateX(-50%);
         width: 300px;
         height: 300px;
-        background: radial-gradient(circle, rgba(233, 30, 140, 0.15) 0%, transparent 70%);
+        background: radial-gradient(
+            circle,
+            rgba(233, 30, 140, 0.15) 0%,
+            transparent 70%
+        );
         pointer-events: none;
     }
-    
+
     .cta-box h2 {
         margin-bottom: 1rem;
         position: relative;
     }
-    
+
     .cta-box p {
         margin-bottom: 2rem;
         color: var(--color-text-muted);
         position: relative;
     }
-    
+
     .cta-actions {
         display: flex;
         gap: 1rem;
@@ -133,12 +185,12 @@ import Card from '../components/Card.astro';
         flex-wrap: wrap;
         position: relative;
     }
-    
+
     .btn-large {
         font-size: 1.15rem;
         padding: 1rem 2.5rem;
     }
-    
+
     .btn-wa {
         display: inline-flex;
         align-items: center;
@@ -147,17 +199,17 @@ import Card from '../components/Card.astro';
         border-radius: var(--radius-md);
         font-weight: 600;
         font-size: 1.15rem;
-        background: #25D366;
+        background: #25d366;
         color: white;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     }
-    
+
     .btn-wa:hover {
         transform: translateY(-3px);
         box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
     }
-    
+
     @media (max-width: 768px) {
         .page-title {
             font-size: 2.25rem;

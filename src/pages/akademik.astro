@@ -1,36 +1,56 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="Informasi Akademik">
     <section class="page-header">
         <div class="page-header-bg"></div>
         <div class="container animate-fade-up">
-            <h1 class="page-title">Pendidikan Berkualitas<br/>untuk <span class="text-gradient">Masa Depan Cerah</span></h1>
-            <p class="page-subtitle">Memadukan kurikulum nasional dan nilai-nilai keislaman</p>
+            <h1 class="page-title">
+                Pendidikan Berkualitas<br />untuk <span class="text-gradient"
+                    >Masa Depan Cerah</span
+                >
+            </h1>
+            <p class="page-subtitle">
+                Memadukan kurikulum nasional dan nilai-nilai keislaman
+            </p>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
             <div class="grid-2">
-                <Card 
-                    title="Kurikulum Nasional & ISMUBA" 
-                    icon="📚"
-                >
-                    <p>SD Muhammadiyah Purwodiningratan memadukan kurikulum pendidikan nasional (Kurikulum Merdeka) dengan kurikulum khas Muhammadiyah (ISMUBA - Al-Islam, Kemuhammadiyahan, dan Bahasa Arab).</p>
-                    <br/>
-                    <p>Pendekatan ini dirancang khusus untuk memastikan keseimbangan antara ilmu pengetahuan umum (Sains & Teknologi) dengan bekal ilmu agama yang kokoh, sesuai dengan semangat <strong>Milenial Qur'ani</strong>.</p>
+                <Card title="Kurikulum Nasional & ISMUBARIS" icon="📚">
+                    <p>
+                        SD Muhammadiyah Purwodiningratan memadukan kurikulum
+                        pendidikan nasional (Kurikulum Merdeka) dengan kurikulum
+                        khas Muhammadiyah (ISMUBARIS - Al-Islam,
+                        Kemuhammadiyahan, Bahasa Arab, dan Bahasa Inggris).
+                    </p>
+                    <br />
+                    <p>
+                        Pendekatan ini dirancang khusus untuk memastikan
+                        keseimbangan antara ilmu pengetahuan umum (Sains &
+                        Teknologi) dengan bekal ilmu agama yang kokoh, sesuai
+                        dengan semangat <strong>Milenial Qur'ani</strong>.
+                    </p>
                 </Card>
-                
-                <Card 
-                    title="Purwo Kids Festival" 
-                    icon="🎉"
-                >
-                    <p>Program unggulan tahunan kami! Ajang kreativitas, seni, dan kompetisi bagi anak-anak untuk mengekspresikan bakat dan minat mereka secara positif dan Islami.</p>
-                    <br/>
-                    <a href="https://linktr.ee/pukif_sdmuh_purwo" target="_blank" class="btn btn-primary" style="margin-top: auto; display: inline-block; width: max-content;">Info Purwo Kids Festival</a>
+
+                <Card title="Purwo Kids Festival" icon="🎉">
+                    <p>
+                        Program unggulan tahunan kami! Ajang kreativitas, seni,
+                        dan kompetisi bagi anak-anak untuk mengekspresikan bakat
+                        dan minat mereka secara positif dan Islami.
+                    </p>
+                    <br />
+                    <a
+                        href="https://linktr.ee/pukif_sdmuh_purwo"
+                        target="_blank"
+                        class="btn btn-primary"
+                        style="margin-top: auto; display: inline-block; width: max-content;"
+                        >Info Purwo Kids Festival</a
+                    >
                 </Card>
             </div>
         </div>
@@ -38,14 +58,19 @@ import Card from '../components/Card.astro';
 </Layout>
 
 <script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate-fade-up').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        },
+        { threshold: 0.1 },
+    );
+    document
+        .querySelectorAll(".animate-fade-up")
+        .forEach((el) => observer.observe(el));
 </script>
 
 <style>
@@ -55,28 +80,32 @@ import Card from '../components/Card.astro';
         text-align: center;
         overflow: hidden;
     }
-    
+
     .page-header-bg {
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse at center top, rgba(233, 30, 140, 0.1) 0%, transparent 60%);
+        background: radial-gradient(
+            ellipse at center top,
+            rgba(233, 30, 140, 0.1) 0%,
+            transparent 60%
+        );
         z-index: -1;
     }
-    
+
     .page-title {
         font-size: 3rem;
         margin-bottom: 1rem;
     }
-    
+
     .page-subtitle {
         color: var(--color-text-muted);
         font-size: 1.15rem;
     }
-    
+
     .section :global(strong) {
         color: var(--color-primary-light);
     }
-    
+
     @media (max-width: 768px) {
         .page-title {
             font-size: 2.25rem;
