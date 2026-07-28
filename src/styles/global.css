@@ -4,38 +4,66 @@
  */
 
 :root {
-  /* Primary Colors - Dark Theme with Magenta */
+  /* Shared Base & Primary Colors */
   --color-primary: #e91e8c;        /* Magenta / Pink */
   --color-primary-light: #f472b6;   /* Light Pink */
   --color-primary-dark: #be185d;    /* Deep Magenta */
   --color-secondary: #7dd3fc;       /* Holographic Cyan */
   --color-accent-purple: #a78bfa;   /* Holographic Purple */
   --color-accent-gold: #fbbf24;     /* Gold/Amber */
-
-  /* Backgrounds */
-  --color-background: #0d0d1a;      /* Very Dark Blue-Black */
-  --color-surface: #1a1a2e;         /* Dark Surface */
-  --color-surface-light: #252545;   /* Slightly Lighter Surface */
-
-  /* Text */
-  --color-text: #f1f5f9;            /* Light Text */
-  --color-text-muted: #94a3b8;      /* Muted Text */
-
-  /* Gradients */
+  
   --gradient-holographic: linear-gradient(135deg, #7dd3fc, #a78bfa, #e91e8c, #f5a623);
   --gradient-magenta: linear-gradient(135deg, #e91e8c, #be185d);
-  --gradient-surface: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(13,13,26,0.95));
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.5), 0 4px 10px -4px rgb(0 0 0 / 0.3);
-  --shadow-glow: 0 0 20px rgba(233, 30, 140, 0.3);
 
   /* Borders & Radius */
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
+}
+
+/* Default / Dark Theme */
+:root,
+:root[data-theme="dark"] {
+  --color-background: #0d0d1a;
+  --color-surface: #1a1a2e;
+  --color-surface-light: #252545;
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  
+  --gradient-surface: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(13,13,26,0.95));
+  
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.5), 0 4px 10px -4px rgb(0 0 0 / 0.3);
+  --shadow-glow: 0 0 20px rgba(233, 30, 140, 0.3);
+
+  /* Glassmorphism & Borders */
+  --color-glass-bg: rgba(26, 26, 46, 0.7);
+  --color-border: rgba(255, 255, 255, 0.05);
+  --color-border-light: rgba(255, 255, 255, 0.08);
+  --color-border-heavy: rgba(255, 255, 255, 0.1);
+}
+
+/* Light Theme */
+:root[data-theme="light"] {
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-light: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  
+  --gradient-surface: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.95));
+  
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.1), 0 4px 10px -4px rgb(0 0 0 / 0.05);
+  --shadow-glow: 0 0 20px rgba(233, 30, 140, 0.15);
+
+  /* Glassmorphism & Borders */
+  --color-glass-bg: rgba(255, 255, 255, 0.7);
+  --color-border: rgba(0, 0, 0, 0.05);
+  --color-border-light: rgba(0, 0, 0, 0.08);
+  --color-border-heavy: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -74,10 +102,10 @@ img {
 
 /* Glassmorphism - Dark */
 .glass {
-  background: rgba(26, 26, 46, 0.7);
+  background: var(--color-glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border-light);
 }
 
 /* Typography */
@@ -176,10 +204,16 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-lg), 0 0 30px rgba(233, 30, 140, 0.5);
 }
 
+.btn-outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border-heavy);
+}
+
 .btn-secondary {
   background: var(--color-surface-light);
   color: var(--color-text);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--color-border-heavy);
 }
 
 .btn-secondary:hover {
