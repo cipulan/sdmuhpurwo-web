@@ -9,9 +9,19 @@
         </a>
         <nav class="nav-links" id="nav-links">
             <a href="/" class="nav-link">Beranda</a>
-            <a href="/akademik" class="nav-link">Akademik</a>
+            <div class="dropdown">
+                <button class="nav-link dropdown-toggle" aria-expanded="false">
+                    Tentang Kami <span class="caret">▼</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="/profil" class="dropdown-item">Profil</a>
+                    <a href="/akademik" class="dropdown-item">Akademik</a>
+                    <a href="/kontak" class="dropdown-item">Kontak</a>
+                </div>
+            </div>
+            <a href="/program-unggulan" class="nav-link">Program</a>
+            <a href="/fasilitas" class="nav-link">Fasilitas</a>
             <a href="/berita" class="nav-link">Berita</a>
-            <a href="/kontak" class="nav-link">Kontak</a>
             <a href="/ppdb" class="btn btn-primary nav-btn">PPDB</a>
         </nav>
         <div class="header-actions">
@@ -138,6 +148,71 @@
         width: 100%;
     }
     
+    /* Dropdown Styles */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: 0.5rem 0;
+        min-width: 160px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-lg);
+        z-index: 110;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-item {
+        padding: 0.6rem 1rem;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        transition: background 0.3s ease, color 0.3s ease;
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+
+    .dropdown-item:hover {
+        background: rgba(233, 30, 140, 0.1);
+        color: var(--color-primary);
+    }
+
+    .dropdown-toggle {
+        background: none;
+        border: none;
+        font-size: 1rem;
+        font-family: inherit;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0;
+    }
+
+    .caret {
+        font-size: 0.7rem;
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown:hover .caret {
+        transform: rotate(180deg);
+    }
+    
     .nav-btn {
         padding: 0.5rem 1.25rem;
         font-size: 0.875rem;
@@ -187,16 +262,47 @@
         .nav-link::after {
             display: none;
         }
+
+        /* Mobile Dropdown Override */
+        .dropdown-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+            padding: 0 0 0 1rem;
+            display: none;
+        }
+        
+        .dropdown.active .dropdown-menu {
+            display: flex;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+        
+        .dropdown.active .caret {
+            transform: rotate(180deg);
+        }
     }
 </style>
 
 <script>
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navLinks = document.getElementById('nav-links');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
     
     mobileMenuBtn?.addEventListener('click', () => {
         mobileMenuBtn.classList.toggle('active');
         navLinks?.classList.toggle('active');
+    });
+
+    dropdownToggle?.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdownToggle.parentElement?.classList.toggle('active');
+        }
     });
 
     // Theme Toggle Logic
