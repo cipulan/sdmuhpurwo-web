@@ -55,22 +55,26 @@
 </style>
 
 <script>
-    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    document.addEventListener('astro:page-load', () => {
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
 
-    const toggleVisibility = () => {
-        if (window.scrollY > 300) {
-            scrollToTopBtn?.classList.add('visible');
-        } else {
-            scrollToTopBtn?.classList.remove('visible');
-        }
-    };
+        const toggleVisibility = () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn?.classList.add('visible');
+            } else {
+                scrollToTopBtn?.classList.remove('visible');
+            }
+        };
 
-    window.addEventListener('scroll', toggleVisibility);
+        window.removeEventListener('scroll', toggleVisibility);
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
+        toggleVisibility();
 
-    scrollToTopBtn?.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        scrollToTopBtn?.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     });
 </script>

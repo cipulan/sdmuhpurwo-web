@@ -289,35 +289,46 @@
 </style>
 
 <script>
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const navLinks = document.getElementById('nav-links');
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    
-    mobileMenuBtn?.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        navLinks?.classList.toggle('active');
-    });
+    document.addEventListener('astro:page-load', () => {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks?.classList.toggle('active');
+        });
 
-    dropdownToggle?.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            dropdownToggle.parentElement?.classList.toggle('active');
+        dropdownToggle?.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdownToggle.parentElement?.classList.toggle('active');
+            }
+        });
+
+        // Close mobile menu & dropdown when any navigation link is clicked
+        navLinks?.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn?.classList.remove('active');
+                navLinks?.classList.remove('active');
+                dropdownToggle?.parentElement?.classList.remove('active');
+            });
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        const handleToggleClick = () => {
+            const element = document.documentElement;
+            const currentTheme = element.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            element.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        };
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', handleToggleClick);
         }
     });
-
-    // Theme Toggle Logic
-    const themeToggle = document.getElementById('theme-toggle');
-    
-    const handleToggleClick = () => {
-        const element = document.documentElement;
-        const currentTheme = element.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        element.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    };
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', handleToggleClick);
-    }
 </script>

@@ -91,22 +91,8 @@ import PrestasiSlider from "../components/PrestasiSlider.astro";
     <PrestasiSlider />
 </Layout>
 
-<script>
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        },
-        { threshold: 0.1 },
-    );
 
-    document
-        .querySelectorAll(".animate-fade-up")
-        .forEach((el) => observer.observe(el));
-</script>
+
 
 <style>
     /* Hero */

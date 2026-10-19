@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
 
+import { ClientRouter } from 'astro:transitions';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -49,8 +51,9 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<title>{title} | SD Muhammadiyah Purwodiningratan</title>
+        <ClientRouter />
         <script is:inline>
-            const theme = (() => {
+            const getTheme = () => {
                 if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
                     return localStorage.getItem('theme');
                 }
@@ -58,8 +61,32 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
                     return 'light';
                 }
                 return 'dark';
-            })();
-            document.documentElement.setAttribute('data-theme', theme);
+            };
+            document.documentElement.setAttribute('data-theme', getTheme());
+
+            document.addEventListener('astro:after-swap', () => {
+                document.documentElement.setAttribute('data-theme', getTheme());
+            });
+        </script>
+        <script>
+            const setupFadeObserver = () => {
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    },
+                    { threshold: 0.1 }
+                );
+
+                document.querySelectorAll('.animate-fade-up').forEach((el) => {
+                    observer.observe(el);
+                });
+            };
+
+            document.addEventListener('astro:page-load', setupFadeObserver);
         </script>
 	</head>
 	<body>

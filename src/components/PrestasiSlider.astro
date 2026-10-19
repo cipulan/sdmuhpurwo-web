@@ -41,56 +41,63 @@
 </section>
 
 <script>
-    const track = document.getElementById('prestasi-slider');
-    const slides = Array.from(track?.querySelectorAll('.slide') || []);
-    const prevBtn = document.querySelector('.slider-btn.prev');
-    const nextBtn = document.querySelector('.slider-btn.next');
-    const dotsContainer = document.getElementById('slider-dots');
+    document.addEventListener('astro:page-load', () => {
+        const track = document.getElementById('prestasi-slider');
+        if (!track) return;
 
-    if (track && slides.length > 0) {
-        // Create dots
-        slides.forEach((_, idx) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (idx === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => scrollToSlide(idx));
-            dotsContainer?.appendChild(dot);
-        });
+        const slides = Array.from(track.querySelectorAll('.slide') || []);
+        const prevBtn = document.querySelector('.slider-btn.prev');
+        const nextBtn = document.querySelector('.slider-btn.next');
+        const dotsContainer = document.getElementById('slider-dots');
 
-        const dots = Array.from(dotsContainer?.querySelectorAll('.dot') || []);
+        if (slides.length > 0) {
+            // Clear any existing dots to prevent duplication
+            if (dotsContainer) dotsContainer.innerHTML = '';
 
-        const scrollToSlide = (index) => {
-            const slideWidth = track.clientWidth;
-            track.scrollTo({
-                left: index * slideWidth,
-                behavior: 'smooth'
+            // Create dots
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (idx === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => scrollToSlide(idx));
+                dotsContainer?.appendChild(dot);
             });
-            updateDots(index);
-        };
 
-        const updateDots = (activeIndex) => {
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === activeIndex);
+            const dots = Array.from(dotsContainer?.querySelectorAll('.dot') || []);
+
+            const scrollToSlide = (index) => {
+                const slideWidth = track.clientWidth;
+                track.scrollTo({
+                    left: index * slideWidth,
+                    behavior: 'smooth'
+                });
+                updateDots(index);
+            };
+
+            const updateDots = (activeIndex) => {
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === activeIndex);
+                });
+            };
+
+            prevBtn?.addEventListener('click', () => {
+                const index = Math.round(track.scrollLeft / track.clientWidth);
+                const newIndex = Math.max(0, index - 1);
+                scrollToSlide(newIndex);
             });
-        };
 
-        prevBtn?.addEventListener('click', () => {
-            const index = Math.round(track.scrollLeft / track.clientWidth);
-            const newIndex = Math.max(0, index - 1);
-            scrollToSlide(newIndex);
-        });
+            nextBtn?.addEventListener('click', () => {
+                const index = Math.round(track.scrollLeft / track.clientWidth);
+                const newIndex = Math.min(slides.length - 1, index + 1);
+                scrollToSlide(newIndex);
+            });
 
-        nextBtn?.addEventListener('click', () => {
-            const index = Math.round(track.scrollLeft / track.clientWidth);
-            const newIndex = Math.min(slides.length - 1, index + 1);
-            scrollToSlide(newIndex);
-        });
-
-        track.addEventListener('scroll', () => {
-            const index = Math.round(track.scrollLeft / track.clientWidth);
-            updateDots(index);
-        });
-    }
+            track.addEventListener('scroll', () => {
+                const index = Math.round(track.scrollLeft / track.clientWidth);
+                updateDots(index);
+            });
+        }
+    });
 </script>
 
 <style>

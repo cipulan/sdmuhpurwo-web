@@ -31,6 +31,15 @@
 </section>
 
 <script async src="//www.instagram.com/embed.js"></script>
+<script>
+    document.addEventListener('astro:page-load', () => {
+        // @ts-ignore
+        if (typeof window !== 'undefined' && window.instgrm?.Embeds) {
+            // @ts-ignore
+            window.instgrm.Embeds.process();
+        }
+    });
+</script>
 
 <style>
     .instagram-section {
